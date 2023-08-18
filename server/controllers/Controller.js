@@ -10,6 +10,7 @@ function generateRandomOTP(length = 4) {
   return otp;
 }
 
+
 module.exports.sendOTP = async (req, res, next) => {
   try{
        console.log('request',req.body);
@@ -19,7 +20,6 @@ module.exports.sendOTP = async (req, res, next) => {
       const authToken = process.env.authToken;
       const client = require('twilio')(accountSid, authToken);
       const otp = generateRandomOTP();
-
       client.messages
           .create({
               body: `Your otp is ${otp}`,
@@ -33,3 +33,35 @@ module.exports.sendOTP = async (req, res, next) => {
       next(ex);
   }
 };
+
+
+
+module.exports.sendOTP = async (req, res, next) => {
+  try{
+      const phone = req.body.phoneNumber;
+      const accountSid = process.env.accountSid;
+      const authToken = process.env.authToken;
+      const otp = generateRandomOTP();
+      const client = require('twilio')(accountSid, authToken);
+      client.messages
+          .create({
+              body: `Your otp is ${otp}`,
+              from: '+18155958349',
+              to: `${phone}`,
+          })
+          .then(message => console.log(message.sid));
+          res.json({msg: "otp sent successfully", status : true , otp : otp });
+  }catch(ex){
+      next(ex);
+  }
+};
+
+module.exports.verifyOTP = async (req, res, next) => {
+      const otpRecieved = req.body.otp;
+      if(otpRecieved === otp){
+        res.json({msg: 'successful',status : true});
+      }else{
+        res.json({msg:'fail', status : false})
+      }
+};
+
