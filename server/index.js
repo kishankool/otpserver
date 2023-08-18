@@ -5,8 +5,17 @@ const authRoutes = require("./routes/auth");
 const app = express();
 require("dotenv").config();
 
+app.use(function (req, res, next) {
+  req.headers['content-type'] = 'application/json';
+  next();
+});
+
+app.use(function(req, res, next) {
+  res.setHeader("Content-Type", "application/json");
+  next();
+});
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
