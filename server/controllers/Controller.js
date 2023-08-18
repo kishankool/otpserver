@@ -12,7 +12,9 @@ function generateRandomOTP(length = 4) {
 
 module.exports.sendOTP = async (req, res, next) => {
   try{
+       console.log('request',req.json);
       const {phone} = req.body.phoneNumber;
+      console.log(phone);
       const accountSid = process.env.accountSid;
       const authToken = process.env.authToken;
       const client = require('twilio')(accountSid, authToken);
@@ -20,7 +22,7 @@ module.exports.sendOTP = async (req, res, next) => {
 
       client.messages
           .create({
-              body: `Your otp is ${otp}  `,
+              body: `Your otp is ${otp}`,
               from: '+18155958349',
               to: `${phone}`
           })
