@@ -51,9 +51,10 @@ module.exports.sendOTP = async (req, res, next) => {
           })
           .then(message => console.log(message.sid));
           res.json({msg: "otp sent successfully", status : true , otp : otp });
-  }catch(ex){
-      next(ex);
-  }
+  }catch(error){
+    console.log('There has been a problem with your fetch operation: ' + error.message);
+      throw error;
+  };
 };
 
 module.exports.verifyOTP = async (req, res, next) => {
