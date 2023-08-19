@@ -10,12 +10,18 @@ app.use(function (req, res, next) {
   next();
 });
 
+const corsOptions={
+  origin:"*",
+}
+
+app.use(cors(corsOptions));
+
 app.use(function(req, res, next) {
   res.setHeader("Content-Type", "application/json");
   next();
 });
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
