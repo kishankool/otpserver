@@ -96,4 +96,4 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ---
 
-Feel free to contact us at support@example.com if you have any questions or need assistance using the API. We hope you find this API helpful for adding OTP functionality and SMS verification to your applications!
+Feel free to contact us at kishanmishra389@gmail.com if you have any questions or need assistance using the API. We hope you find this API helpful for adding OTP functionality and SMS verification to your applications!
