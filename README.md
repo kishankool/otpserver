@@ -33,7 +33,7 @@ No installation is required as this API is hosted on a remote server. You can st
 
 ### Endpoint
 
-The base URL for the API is: `http://otpserver-5k5n.onrender.com/api/sendOTP`
+The base URL for the API is: `https://otpserver-5k5n.onrender.com/api/sendOTP`
 
 The request should include a JSON object containing the `phoneNumber` with the country code (e.g., "+1" for the United States):
 
