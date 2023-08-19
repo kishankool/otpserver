@@ -35,14 +35,6 @@ No installation is required as this API is hosted on a remote server. You can st
 
 The base URL for the API is: `http://otpserver-5k5n.onrender.com/api/sendOTP`
 
-### Request
-
-To generate an OTP and send it via SMS, make a `POST` request to the following endpoint:
-
-```
-POST /generate-otp
-```
-
 The request should include a JSON object containing the `phoneNumber` with the country code (e.g., "+1" for the United States):
 
 ```json
